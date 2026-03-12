@@ -1,6 +1,6 @@
 # name: NTIRE_2026_ALLINONE_TestSE_median_window_only_L1_960000
 # name: ALLINONE_Testset_TTO_FollowOriginal_1e_5_norotflip_last
-name: ALLINONE_TestLQ_FollowMedianTSE_1e_5_norotflip_p256_80000_meanWin16
+name: ALLINONE_TestLQ_FollowMedianTSE_1e_5_norotflip_p256_meanWin16
 suffix: ~  
 model_type: TestAllTricksModel
 scale: 1
@@ -12,8 +12,8 @@ datasets:
   test_1:
     name: Test_LQ
     type: PairedImageDataset
-    dataroot_gt: /root/autodl-tmp/unsupervised deraining/datasets/Real-World All-in-One/Test_LQ
-    dataroot_lq: /root/autodl-tmp/unsupervised deraining/datasets/Real-World All-in-One/Test_LQ
+    dataroot_gt: datasets/Real-World All-in-One/Test_LQ
+    dataroot_lq: datasets/Real-World All-in-One/Test_LQ
     filename_tmpl: '{}'
     io_backend:
       type: disk
@@ -41,7 +41,7 @@ network_g:
 
 # path
 path:
-  pretrain_network_g: experiments/NTIRE_2026_ALLINONE_TTO_FollowMedianTSE_new_1e_5_norotflip_p256_step2/models/net_g_80000.pth
+  pretrain_network_g: ~
   # param_key_g: params_ema
 
 # validation settings
