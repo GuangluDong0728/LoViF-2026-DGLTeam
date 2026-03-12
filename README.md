@@ -30,6 +30,7 @@ To test our model, please open the `options/NTIRE2026/test_se.yml` file and upda
 ```bash
 python basicsr/test.py -opt options/NTIRE2026/test_se.yml
 ```
+Then, please use rename2.py and png2jpg_ntire.py to rename the images and change them to jpg.
 
 # Factsheet and results on testset
 
