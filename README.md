@@ -25,12 +25,19 @@ You can refer to the environment preparation process of [BasicSR](https://github
      
 # Testing
 
-## Testing
 To test our model, please open the `options/NTIRE2026/test_se.yml` file and update the paths, and just run the command:
 
 ```bash
 python basicsr/test.py -opt options/NTIRE2026/test_se.yml
 ```
+
+# Factsheet and results on testset
+
+1. **Download Factsheet:**
+   - Navigate to [this link](https://drive.google.com/file/d/1pqLWFqFFNqlCINLmM3STV9C_Tx9gz1p7/view?usp=sharing) to download our Factsheet.
+     
+2. **Download results on testset:**
+   - Navigate to [this link](https://drive.google.com/file/d/1vkrpr2skgrQImYA6Nv9oDqJ5bQ9iviFI/view?usp=sharing) to download our results on testset. 
 
 # Acknowledgements
 
