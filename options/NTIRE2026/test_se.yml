@@ -1,0 +1,61 @@
+# name: NTIRE_2026_ALLINONE_TestSE_median_window_only_L1_960000
+# name: ALLINONE_Testset_TTO_FollowOriginal_1e_5_norotflip_last
+name: ALLINONE_TestLQ_FollowMedianTSE_1e_5_norotflip_p256_80000_meanWin16
+suffix: ~  
+model_type: TestAllTricksModel
+scale: 1
+crop_border: 0  
+num_gpu: 1  
+manual_seed: 0
+
+datasets:
+  test_1:
+    name: Test_LQ
+    type: PairedImageDataset
+    dataroot_gt: /root/autodl-tmp/unsupervised deraining/datasets/Real-World All-in-One/Test_LQ
+    dataroot_lq: /root/autodl-tmp/unsupervised deraining/datasets/Real-World All-in-One/Test_LQ
+    filename_tmpl: '{}'
+    io_backend:
+      type: disk
+
+network_g:
+  type: DualPromptRestormerv3_only_task_prompt
+  img_channel: 3
+  # dim: None
+  # width: None
+  enc_blk_nums: [4, 6, 6] 
+  middle_blk_num: 8       
+  dec_blk_nums: [6, 6, 4]
+  refine_blk_num: 4    
+  heads: [1, 2, 4, 8]
+  ffn_expansion_factor: 2.66
+  # bias: False
+  LayerNorm_type: 'WithBias'
+  # 提示池配置
+  use_prompt: true
+  degradation_pool_size: 15
+  degradation_prompt_dim: 1024
+  degradation_top_k: 3
+  value_num_tokens: 2  
+  fusion_method: 'cross_attention'  
+
+# path
+path:
+  pretrain_network_g: experiments/NTIRE_2026_ALLINONE_TTO_FollowMedianTSE_new_1e_5_norotflip_p256_step2/models/net_g_80000.pth
+  # param_key_g: params_ema
+
+# validation settings
+val:
+  save_img: true
+  suffix: ~  
+  pbar: true
+
+  metrics:
+    psnr: 
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
+    ssim:
+      type: calculate_ssim
+      crop_border: 0
+      test_y_channel: false
