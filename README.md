@@ -26,7 +26,7 @@ You can refer to the environment preparation process of [BasicSR](https://github
 # Testing
 
 ## Testing
-To test our model, please open the `options/test/Derain/test_deraining.yml` file and update the paths, and just run the command:
+To test our model, please open the `options/NTIRE2026/test_se.yml` file and update the paths, and just run the command:
 
 ```bash
 python basicsr/test.py -opt options/NTIRE2026/test_se.yml
