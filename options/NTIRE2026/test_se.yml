@@ -1,5 +1,3 @@
-# name: NTIRE_2026_ALLINONE_TestSE_median_window_only_L1_960000
-# name: ALLINONE_Testset_TTO_FollowOriginal_1e_5_norotflip_last
 name: ALLINONE_TestLQ_FollowMedianTSE_1e_5_norotflip_p256_meanWin16
 suffix: ~  
 model_type: TestAllTricksModel
