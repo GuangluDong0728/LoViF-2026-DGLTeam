@@ -1,6 +1,6 @@
 # general settings
 name: NTIRE_2026_ALLINONE_5TASK_DualPromptRestormerv3_only_task_prompt
-model_type: NTIREALLINONEModel  # 使用新的多模态模型
+model_type: NTIREALLINONEModel 
 scale: 1
 num_gpu: 1
 manual_seed: 42
@@ -139,8 +139,8 @@ network_g:
   degradation_pool_size: 15
   degradation_prompt_dim: 1024
   degradation_top_k: 3
-  value_num_tokens: 2  # 新增：每个value的token数量
-  fusion_method: 'cross_attention'  # 提示与特征的融合方式
+  value_num_tokens: 2 
+  fusion_method: 'cross_attention' 
 
 # path
 path:
@@ -151,15 +151,13 @@ path:
 train:
   # EMA设置
   # ema_decay: 0.999
-  # 基础优化器设置
   optim_g:
     type: Adam
     lr: !!float 4e-4
     weight_decay: 0
     betas: [0.9, 0.99]
-  
-  # 提示池专用学习率 (通常设置为主网络的0.1-0.5倍)
-  prompt_lr: !!float 4e-4  # 提示池使用较小学习率
+
+  prompt_lr: !!float 4e-4  
   
   scheduler:
     type: CosineAnnealingRestartLR
@@ -168,9 +166,9 @@ train:
     eta_min: !!float 1e-6
 
   warmup_iter: 1000
-  # AMP与梯度
-  use_amp: true
-  grad_clip: 1.0
+  
+  # use_amp: true
+  # grad_clip: 1.0
   
   total_iter: 1000000
   # warmup_iter: -1  # no warm up
@@ -199,29 +197,10 @@ train:
   #   style_weight: 0
   #   range_norm: false
   #   criterion: l1
-  
-  # 提示池多样性约束
-  prompt_diversity_weight: !!float 1.0 # 多样性损失权重
-  diversity_temperature: !!float 0.1     # 多样性损失温度参数
-  
-  # # 提示使用均衡性约束
-  # prompt_balance_weight: !!float 1.0   # 均衡性损失权重
-  # stats_update_freq: 5000                 # 统计更新频率
-  # # 可选：添加提示池重新初始化
-  # reinit_prompts: false                  # 如果问题严重，重新初始化
 
-  # # 新增损失权重
-  # prompt_contrastive_weight: 1.0  # 对比学习损失
-  # prompt_orthogonality_weight: 0.1  # 正交性损失
-
-  # === 新增：提示池分析配置 ===
-  # 训练时的提示分析设置（可选，影响训练速度）
   enable_prompt_analysis: false           # 是否启用详细提示分析
   prompt_analysis_freq: 50000            # 执行详细分析的频率（迭代数）
   prompt_analysis_save_path: './prompt_analysis'  # 分析结果保存路径
-  
-  # 注意：训练时不建议启用详细分析，因为会显著增加训练时间
-  # 建议在关键检查点（如50k, 100k迭代）手动启用一次
 
 # validation settings
 val:
@@ -252,10 +231,3 @@ logger:
 dist_params:
   backend: nccl
   port: 29500
-
-# === 额外说明 ===
-# 1. 确保所有JSON文本描述文件都已生成并放在指定路径
-# 2. 如果CLIP加载失败，系统会自动禁用CLIP约束继续训练
-# 3. 提示池学习率建议设置为主网络的0.1-0.5倍
-# 4. 各种损失权重可以根据实验效果调整
-# 5. 建议先用较小的数据集测试配置是否正确
