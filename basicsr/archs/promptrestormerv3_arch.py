@@ -115,13 +115,13 @@ class DualPromptRestormerv3(nn.Module):
                  LayerNorm_type='WithBias',
                  # Prompt system
                  use_prompt=True,
-                 domain_pool_size=6,
-                 degradation_pool_size=12,
+                 domain_pool_size=15,
+                 degradation_pool_size=15,
                  domain_prompt_dim=1024,
                  degradation_prompt_dim=1024,
-                 domain_top_k=3,
+                 domain_top_k=5,
                  degradation_top_k=3,
-                 value_num_tokens=5,
+                 value_num_tokens=2,
                  prompt_fusion_method='cross_attention',
                  fusion_method='cross_attention'):
         super().__init__()
@@ -347,10 +347,10 @@ class DualPromptRestormerv3_only_task_prompt(nn.Module):
                  LayerNorm_type='WithBias',
                  # Prompt system
                  use_prompt=True,
-                 degradation_pool_size=12,
+                 degradation_pool_size=15,
                  degradation_prompt_dim=1024,
                  degradation_top_k=3,
-                 value_num_tokens=5,
+                 value_num_tokens=2,
                  fusion_method='cross_attention'):
         super().__init__()
 
