@@ -111,8 +111,8 @@ class TestAllTricksModel(BaseModel):
         self.net_g = build_network(opt['network_g'])
         self.net_g = self.model_to_device(self.net_g)
 
-        if not hasattr(self.net_g, 'use_prompt') or not self.net_g.use_prompt:
-            raise ValueError("Network must support prompt pools (use_prompt=True)")
+        # if not hasattr(self.net_g, 'use_prompt') or not self.net_g.use_prompt:
+        #     raise ValueError("Network must support prompt pools (use_prompt=True)")
 
         load_path = self.opt['path'].get('pretrain_network_g', None)
         if load_path is not None:
